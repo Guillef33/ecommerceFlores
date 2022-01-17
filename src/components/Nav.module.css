@@ -1,0 +1,57 @@
+.navcontainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #212121;
+    color: whitesmoke;
+}
+.navcontainer ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.navcontainer ul li {
+    margin-right: 10px;
+}
+
+.accountNav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.accountNav p {
+    margin-right: 10px;
+}
+
+.faBeer {
+    width: 2em;
+    height: 2em;
+}
+
+.Menu {
+    display: none;
+}
+
+.MobileMenu {
+     display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .Menu {
+    display: block;
+}
+.MobileMenu {
+     display: none;
+}
+
+.accountNav {
+    display: none;
+}
+
+.desktopMenu {
+    display: none;
+}
+    
+}
