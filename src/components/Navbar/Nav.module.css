@@ -19,6 +19,7 @@
 .accountNav {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .accountNav p {
@@ -40,18 +41,23 @@
 
 @media screen and (max-width: 600px) {
     .Menu {
-    display: block;
-}
-.MobileMenu {
-     display: none;
-}
+        display: flex;
+        align-items: center;
+    }
 
-.accountNav {
-    display: none;
-}
+    .Menu > svg {
+        margin-right: 10px;
+    }
+    .MobileMenu {
+        display: none;
+    }
 
-.desktopMenu {
-    display: none;
-}
+    .accountNav {
+        display: none;
+    }
+
+    .desktopMenu {
+        display: none;
+    }
     
 }

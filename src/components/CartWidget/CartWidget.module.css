@@ -1,0 +1,12 @@
+.cartBadge {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 14px;
+    background-color: tomato;
+    color: white;
+    padding: 2px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+
+}

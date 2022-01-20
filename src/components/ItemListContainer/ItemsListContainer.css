@@ -1,0 +1,24 @@
+.products-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px 80px;
+}
+
+.products-container > div {
+    height: 400px;
+    background-color: tomato;
+}
+
+@media screen and (max-width: 760px) {
+    .products-container {
+        grid-template-columns: 1fr;
+            padding: 20px;
+    }
+
+    .products-container > div {
+    /* height: 50vh; */
+    width: 100%;
+    }
+    
+}
