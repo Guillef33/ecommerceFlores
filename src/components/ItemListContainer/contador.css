@@ -1,0 +1,36 @@
+.contador-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+  /* background-color: darkcyan; */
+}
+
+.contador-container button {
+  background-color: slategray;
+  /* outline: 1px solid tomato; */
+  border: none;
+  width: 30px;
+  height: 30px;
+    font-size: 20px;
+    color: lightcyan;
+}
+
+.contador-container input {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  font-size: 20px;
+  color: black;
+}
+
+.btn-comprar {
+  background-color: white;
+  outline: 1px solid slategray; 
+    color: slategray;
+  border: none;
+  padding: 0px 25px;
+  margin: 10px 0px;
+  height: 30px;
+}

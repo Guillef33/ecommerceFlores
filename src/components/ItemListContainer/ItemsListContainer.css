@@ -1,13 +1,24 @@
 .products-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;; 
     gap: 20px;
-    padding: 20px 80px;
+    padding: 20px 20px;
 }
 
-.products-container > div {
-    height: 400px;
-    background-color: tomato;
+.products-container .product-card {
+    height: auto;
+}
+
+.product-card {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid whitesmoke;
+    background-color: white;
+}
+
+.card-header img {
+    /* max-width: 250px; */
+    height: 250px;
 }
 
 @media screen and (max-width: 760px) {
