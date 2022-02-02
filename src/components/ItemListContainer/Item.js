@@ -1,19 +1,21 @@
-import React from 'react'
+import React from "react";
 
-import ItemCount from './ItemCount';
+import ItemCount from "./ItemCount";
 
-import './ItemsListContainer.css'
+import "./ItemsListContainer.css";
 
-const Item = ( {product, contador, setContador} ) => {
-    return (
-      <div className="product-card" key={product.id}>
-        <div className="card-header">
-          <img src={product.image} alt="camisa" />
+const Item = ({ product, contador, setContador }) => {
+  return (
+    <div className="product-card" key={product.id}>
+      <div className="card-header">
+        <img src={product.image} alt="camisa" />
+      </div>
+      <div className="card-body">
+        <div>
+          <h4>${product.price}</h4>
+          <h2 className="card-title">{product.title}</h2>
         </div>
-        <div className="card-body">
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-          <strong>${product.price}</strong>
+        <div>
           <ItemCount
             contador={contador}
             setContador={setContador}
@@ -22,7 +24,8 @@ const Item = ( {product, contador, setContador} ) => {
           />
         </div>
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default Item;
