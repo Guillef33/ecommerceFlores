@@ -9,8 +9,8 @@ import Item from "./Item";
 const ItemContainer = ({ contador, setContador, initial, stock }) => {
 
 
-  const [fake, setFake] = useState([]);
-  console.log(fake)
+  const [fakes, setFakes] = useState([]);
+  console.log(fakes)
 
   useEffect ( () => {
     fakeStore();
@@ -20,17 +20,62 @@ const ItemContainer = ({ contador, setContador, initial, stock }) => {
     
     const response = await fetch("https://fakestoreapi.com/products")
     const jsonData = await response.json();
-    setFake(jsonData);
+    setFakes(jsonData);
   }
 
   return (
-    <div className="products-container">
-      {fake.slice(0,6).map((fakes) => {
-        return (
-          <Item product={fakes} contador={contador} setContador={setContador} />
-        );
-      })}
-    </div>
+    <>
+      <section>
+        <h2>New arrivals</h2>
+        <div className="products-container">
+          {fakes
+            .slice(0, 16)
+            .filter((fake) => fake.category !== "jewelery" && fake.category !== 'electronics')
+            .map((newest) => {
+              return (
+                <Item
+                  product={newest}
+                  contador={contador}
+                  setContador={setContador}
+                />
+              );
+            })}
+        </div>
+      </section>
+      <section>
+        <h2>The best Jewelery in Town</h2>
+        <div className="products-container">
+          {fakes
+            .slice(0, 6)
+            .filter((fake) => fake.category === "jewelery")
+            .map((filteredFake) => {
+              return (
+                <Item
+                  product={filteredFake}
+                  contador={contador}
+                  setContador={setContador}
+                />
+              );
+            })}
+        </div>
+      </section>
+      <section>
+        <h2>Electronics</h2>
+        <div className="products-container">
+          {fakes
+            .filter((fake) => fake.category === "electronics")
+            .map((electronics) => {
+              return (
+                <Item
+                  product={electronics}
+                  contador={contador}
+                  setContador={setContador}
+                />
+              );
+            })}
+        </div>
+      </section>
+    </>
   );
 };
 
