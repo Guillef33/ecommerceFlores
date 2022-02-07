@@ -18,6 +18,7 @@ function ItemDetailContainer() {
 
 
   const getItem = () => {
+    try {
       axios(`https://fakestoreapi.com/products/${id}`).then((res) => {
         const productRate = Math.round(res.data.rating.rate);
         console.log(productRate);
@@ -28,8 +29,11 @@ function ItemDetailContainer() {
         );
         setItem(res.data);
       });
+      } catch (error) {
+        console.log(error)
+      }
   }
-
+  
   return (
      <ItemDetail item={item} stars={stars}  /> 
   )

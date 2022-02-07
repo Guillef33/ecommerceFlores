@@ -20,10 +20,14 @@ const Home = ({ contador, setContador, initial, stock }) => {
   }, []);
 
   const allProducts = async () => {
+    try {
     axios(`https://fakestoreapi.com/products/`).then((res) => {
       console.log(res);
       setProducts(res.data);
     });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
