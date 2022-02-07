@@ -1,11 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import "./contador.css";
+import "./contador.scss";
 
 const ItemCount = ({ stock, initial }) => {
   const [contador, setContador] = useState(initial);
-
-  // const [stock, setStock] = useState(20);
 
   const onAdd = () => {
     return alert(`Deseas agregar al carrito, ${contador} unidades?`);
@@ -41,11 +40,11 @@ const ItemCount = ({ stock, initial }) => {
           +
         </button>
       </div>
-      <div>
+      <Link to="/cart">
         <button className="btn-comprar" onClick={onAdd}>
           Add to cart
         </button>
-      </div>
+      </Link>
     </div>
   );
 };

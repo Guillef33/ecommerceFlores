@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import ItemCount from "./ItemCount";
 
-import "./ItemsListContainer.css";
+import "./ItemsListContainer.scss";
 
 const Item = ({ product, contador, setContador }) => {
+  
   return (
     <div className="product-card" key={product.id}>
-      <div className="card-header">
-        <img src={product.image} alt="camisa" />
-      </div>
+      <Link to={`/products/${product.id}`}>
+        <div className="card-header">
+          <img src={product.image} alt="camisa" />
+        </div>
+      </Link>
       <div className="card-body">
         <div>
           <h4>${product.price}</h4>

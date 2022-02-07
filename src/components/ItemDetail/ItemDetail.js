@@ -1,11 +1,13 @@
 import React from "react";
 
-import "./ItemDetail.css";
+import "./ItemDetail.scss";
 import Rate from "./Rate";
 
 import ItemCount from "../ItemListContainer/ItemCount";
 
 function ItemDetail({ item, stars }) {
+
+
   return (
     <div className="detail-container">
       <div className="detail-image">

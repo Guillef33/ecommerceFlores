@@ -4,11 +4,12 @@ import { links, social } from "./data";
 
 import CartWidget from "../CartWidget/CartWidget";
 
-import "./NewNav.css";
+import "./NewNav.scss";
+import { Link } from "react-router-dom";
 
-// import styles from "./NewNav.module.css"; 
+// import styles from "./NewNav.module.css";
 
-const Newnav = ( { contador, setContador } ) => {
+const Newnav = ({ contador, setContador }) => {
   const [showLinks, setShowLinks] = useState(true);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
@@ -27,7 +28,9 @@ const Newnav = ( { contador, setContador } ) => {
     <nav>
       <div className="nav-center">
         <div className="nav-header">
-          <FaBeer className="faBeer" />
+          <Link to={'/'}>
+            <FaBeer className="faBeer" />
+          </Link>
           <button
             className="nav-toggle"
             onClick={() => {
@@ -42,32 +45,29 @@ const Newnav = ( { contador, setContador } ) => {
             {links.map((link) => {
               const { id, url, text } = link;
               return (
-                <li>
-                  <a key={id} href={url}>
-                    {text}
-                  </a>
-                </li>
+                <Link to={url} key={id}>
+                  {text}
+                </Link>
               );
             })}
           </ul>
         </div>
         <div className="accountNav">
           <ul className="links">
-            <li>
-              <a href="/account">Account</a>
-            </li>
+            <Link to="/account">Account</Link>
+
+            <Link to="/cart">
+              <CartWidget contador={contador} setContador={contador} />
+            </Link>
           </ul>
-          <CartWidget contador={contador} setContador={contador} />
         </div>
         <ul className="social-icons">
           {social.map((socialIcon) => {
             const { id, url, icon } = socialIcon;
             return (
-              <li>
-                <a key={id} href={url}>
-                  {icon}
-                </a>
-              </li>
+              <Link to={url} key={id}>
+                {icon}
+              </Link>
             );
           })}
         </ul>

@@ -8,25 +8,24 @@ export const links = [
   },
   {
     id: 2,
-    url: "/inicio",
-    text: "inicio",
+    url: "category/men's clothing",
+    text: "men",
   },
   {
     id: 3,
-    url: "/productos",
-    text: "productos",
+    url: "/category/women's clothing",
+    text: "woman",
   },
   {
     id: 4,
-    url: "/contacto",
-    text: "contacto",
+    url: "/category/electronics",
+    text: "electronics",
   },
   {
     id: 5,
-    url: "/perfil",
-    text: "perfil",
+    url: "/category/jewelery",
+    text: "jewelery",
   },
-
 ];
 
 export const social = [
