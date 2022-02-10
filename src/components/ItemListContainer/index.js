@@ -39,19 +39,6 @@ const ItemContainer = ({ contador, setContador, initial, stock }) => {
 
       <div className="ecommerce-body">
         <section>
-          {/* <h2>New arrivals</h2> */}
-
-          {/* {category ? (
-            <Section
-              category="men's clothing"
-              products={products}
-              setProducts={setProducts}
-            />
-          ) : (
-            <Section products={products} setProducts={setProducts} />
-          )} */}
-        </section>
-        <section>
           <h2>The best Jewelery in Town</h2>
           <Section
             category="jewelery"

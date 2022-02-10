@@ -3,16 +3,13 @@ import { Link } from "react-router-dom";
 
 import "./contador.scss";
 
-const ItemCount = ({ stock, initial }) => {
-  const [contador, setContador] = useState(initial);
+const ItemCount = ({ stock, initial, onAdd, contador, setContador, agregado, setAgregado}) => {
 
-  const onAdd = () => {
-    return alert(`Deseas agregar al carrito, ${contador} unidades?`);
-  };
 
   return (
     <div className="buy-container">
       <div className="contador-container">
+        <p>Cantidad</p>
         <button
           onClick={() => {
             if (contador === 0) {
@@ -40,11 +37,10 @@ const ItemCount = ({ stock, initial }) => {
           +
         </button>
       </div>
-      <Link to="/cart">
-        <button className="btn-comprar" onClick={onAdd}>
-          Add to cart
-        </button>
-      </Link>
+
+      <button className="btn-comprar" onClick={onAdd} agregado={setAgregado}>
+        Add to cart
+      </button>
     </div>
   );
 };

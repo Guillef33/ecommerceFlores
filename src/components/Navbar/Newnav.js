@@ -16,7 +16,7 @@ const Newnav = ({ contador, setContador }) => {
 
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
-    console.log(linksHeight);
+    // console.log(linksHeight);
     if (showLinks) {
       linksContainerRef.current.style.height = `${linksHeight}px`;
     } else {
@@ -28,7 +28,7 @@ const Newnav = ({ contador, setContador }) => {
     <nav>
       <div className="nav-center">
         <div className="nav-header">
-          <Link to={'/'}>
+          <Link to={"/"}>
             <FaBeer className="faBeer" />
           </Link>
           <button
