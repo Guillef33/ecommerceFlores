@@ -57,7 +57,9 @@ const Newnav = ({ contador, setContador }) => {
             <Link to="/account">Account</Link>
 
             <Link to="/cart">
-              <CartWidget contador={contador} setContador={contador} />
+              <CartWidget 
+              // contador={contador} setContador={contador} 
+              />
             </Link>
           </ul>
         </div>

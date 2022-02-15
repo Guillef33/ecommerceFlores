@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import "./contador.scss";
 
-const ItemCount = ({ stock, initial, onAdd, contador, setContador, agregado, setAgregado}) => {
+import { AppContext } from "../../context/AppContext";
+
+const ItemCount = ( ) => {
+  const { product, showModal, stock, setShowItem, setShowModal, contador, setContador, setAddToCart, onAdd } =
+    useContext(AppContext);
+
 
 
   return (
@@ -38,7 +43,7 @@ const ItemCount = ({ stock, initial, onAdd, contador, setContador, agregado, set
         </button>
       </div>
 
-      <button className="btn-comprar" onClick={onAdd} agregado={setAgregado}>
+      <button className="btn-comprar" onClick={onAdd} agregado={setAddToCart}>
         Add to cart
       </button>
     </div>

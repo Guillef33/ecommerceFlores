@@ -1,0 +1,6 @@
+.modal-container {
+    position: absolute;
+    height: 100vh;
+    background-color: whitesmoke;
+    width: 30%;
+}

@@ -1,41 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 
-import { FaStar } from "react-icons/fa";
 import axios from "axios";
 
+import { AppContext } from "../../context/AppContext";
+
+import { FaStar } from "react-icons/fa";
+
 function ItemDetailContainer() {
-  const [item, setItem] = useState({});
-  const [stars, setStars] = useState();
 
+  const appContext = useContext(AppContext);
+
+  const { product, stars, setProduct, setStars } = appContext;
+
+  // const [product, setProduct] = useState({});
+  // const [stars, setStars] = useState();
   const { id } = useParams();
-
 
   useEffect(() => {
     getItem(id);
-  }, [  ])
-
+  }, []);
 
   const getItem = () => {
     try {
       axios(`https://fakestoreapi.com/products/${id}`).then((res) => {
         const productRate = Math.round(res.data.rating.rate);
-        console.log(productRate);
+        // console.log(productRate);
         setStars(
           [...Array(productRate)].map((elem, index) => (
             <FaStar key={index} className="detail-stars" />
           ))
         );
-        setItem(res.data);
+        setProduct(res.data);
       });
-      } catch (error) {
-        console.log(error)
-      }
-  }
-  
-  return (
-     <ItemDetail item={item} stars={stars}  /> 
-  )
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return <ItemDetail 
+  // product={product} stars={stars}
+   />;
 }
 export default ItemDetailContainer;

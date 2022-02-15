@@ -1,23 +1,6 @@
 import React from "react";
 
 function SideBar({ products, setProducts, category }) {
-  // const filterCategory = (category) => {
-  //   const catFilter = products.filter((catProducts) => {
-  //     if (category === "") {
-  //       console.log("No existe la categoria");
-  //       return catProducts;
-  //     }
-  //     if (catProducts.caategory.includes(category)) {
-  //       return catProducts;
-  //     }
-  //   });
-
-  //   setProducts({
-  //     ...products,
-  //     catFilter: catFilter,
-  //     filter: true,
-  //   });
-  // };
 
   return (
     <>

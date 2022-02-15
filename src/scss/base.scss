@@ -30,6 +30,7 @@ a {
 
 .base-layout {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -37,3 +38,11 @@ a {
   font-size: 40px;
   text-transform: uppercase ;
 }
+
+
+// .table {
+//     display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: auto;
+// }

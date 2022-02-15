@@ -1,34 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
 import "../../components/ItemListContainer/ItemsListContainer.scss";
 import './home.scss';
 
-import { FaAngleDown } from "react-icons/fa";
-
-import Item from "../../components/ItemListContainer/Item";
-import SideBar from "../../components/Sidebar/SideBar";
 import Section from "../../components/ItemListContainer/Section";
 
-const Home = ({ contador, setContador, initial, stock }) => {
-  const [products, setProducts] = useState([]);
+import { AppContext } from "../../context/AppContext";
 
-  useEffect(() => {
-    allProducts();
-  }, []);
+const Home = ( ) => {
 
-  const allProducts = async () => {
-    try {
-    axios(`https://fakestoreapi.com/products/`).then((res) => {
-      console.log(res);
-      setProducts(res.data);
-    });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const { products, setProducts, allProducts } = useContext(AppContext);
+
 
   return (
     <>

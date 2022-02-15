@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./ItemDetail.scss";
@@ -6,28 +6,43 @@ import Rate from "./Rate";
 
 import ItemCount from "../ItemListContainer/ItemCount";
 
-function ItemDetail({ item, stars }) {
-  const [contador, setContador] = useState(0);
-  const [agregado, setAgregado] = useState();
-  const [showItem, setShowItem] = useState(true);
+import { AppContext } from "../../context/AppContext";
 
-  const onAdd = () => {
-    setAgregado(item.id);
-    setContador(contador);
-    setShowItem(false);
-    console.log("agregadas", contador, "unidades del producto ", item.title, item.id);
-  };
+function ItemDetail(
+  // { product, stars }
+  ) {
+    // const appContext = useContext(AppContext);
+
+  const { product, stars, contador, setContador, showItem, agregado, setAgregado, onAdd } = useContext(AppContext);
+
+  
+  // const [agregado, setAgregado] = useState();
+  // const [showItem, setShowItem] = useState(true);
+
+  // const onAdd = () => {
+  //   setAgregado(product.id);
+  //   setContador(contador);
+  //   setShowItem(false);
+  //   console.log(
+  //     "agregadas",
+  //     contador,
+  //     "unidades del producto ",
+  //     product.title,
+  //     product.id
+  //   );
+  // };
+
 
   return (
     <div className="detail-container">
       <div className="detail-image">
-        <img src={item.image} alt={item.id} className="image-detail" />
+        <img src={product.image} alt={product.id} className="image-detail" />
       </div>
       <div className="detail-content">
-        <p className="detail-category">{item.category}</p>
-        <h2>{item.title}</h2>
-        <h4 className="detail-price">{item.price}</h4>
-        <p>{item.description}</p>
+        <p className="detail-category">{product.category}</p>
+        <h2>{product.title}</h2>
+        <h4 className="detail-price">{product.price}</h4>
+        <p>{product.description}</p>
         <div>{stars}</div>
         <div className="buy-actions">
           {showItem ? (

@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Item from "./Item";
 
 import "./ItemsListContainer.scss";
 
-function Section({
-  products,
-  setProducts,
-  contador,
-  setContador,
-  category,
-  setCategory,
-}) {
+import { AppContext } from "../../context/AppContext";
+
+
+function Section() {
+
+  const { products, setProducts, contador, setContador, category, setCategory } = useContext(AppContext);
+
   return (
     <div className="products-container">
       {products
-        // .filter((product) => product.category === category)
         .map((product) => {
           return (
             <Item

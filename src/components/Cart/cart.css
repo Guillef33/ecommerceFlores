@@ -1,0 +1,9 @@
+.carrito-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.carrito-text {
+    font-size: 20px;
+    font-weight: 600;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -11,32 +11,14 @@ import Item from "./Item";
 import SideBar from "../Sidebar/SideBar";
 import Section from "./Section";
 
-const ItemContainer = ({ contador, setContador, initial, stock }) => {
-  const [products, setProducts] = useState([]);
+import { AppContext } from "../../context/AppContext";
 
-  useEffect(() => {
-    allProducts();
-  }, []);
+const ItemContainer = () => {
 
-  const allProducts = async () => {
-    axios(`https://fakestoreapi.com/products/`).then(
-      (res) => {
-        console.log(res)
-        setProducts(res.data);
-      }
-    );
-  };
-
+  const { products, setProducts, allProducts } = useContext(AppContext);
 
   return (
     <div className="home-container">
-      {/* <div className="sidebar">
-        {/* <SideBar
-          // products={products}
-          // setProducts={setProducts}
-          // category={category}
-        /> */}
-
       <div className="ecommerce-body">
         <section>
           <h2>The best Jewelery in Town</h2>

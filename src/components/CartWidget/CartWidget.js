@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import styles from "./CartWidget.scss"; 
 import { FiShoppingCart } from "react-icons/fi";
 
-// import Contador from '../ItemListContainer/Contador'
+import { AppContext } from "../../context/AppContext";
 
-const CartWidget = ( {sales, contador} ) => {
+
+const CartWidget = (  ) => {
+
+
+  const {contador, setContador } = useContext(AppContext);
+
+
     return (
       <>
         <FiShoppingCart />

@@ -5,8 +5,13 @@ import ItemCount from "./ItemCount";
 
 import "./ItemsListContainer.scss";
 
-const Item = ({ product, contador, setContador }) => {
-  
+import { AppContext } from "../../context/AppContext";
+
+
+const Item = ( {product } ) => {
+
+  const { contador, setContador, products, setProducts, allProducts } = useContext(AppContext);
+
   return (
     <div className="product-card" key={product.id}>
       <Link to={`/products/${product.id}`}>
