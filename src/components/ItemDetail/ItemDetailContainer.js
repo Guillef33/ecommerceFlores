@@ -14,8 +14,6 @@ function ItemDetailContainer() {
 
   const { product, stars, setProduct, setStars } = appContext;
 
-  // const [product, setProduct] = useState({});
-  // const [stars, setStars] = useState();
   const { id } = useParams();
 
   useEffect(() => {

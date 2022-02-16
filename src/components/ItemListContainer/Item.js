@@ -7,10 +7,12 @@ import "./ItemsListContainer.scss";
 
 import { AppContext } from "../../context/AppContext";
 
+const Item = ({ product }) => {
+  const { products, setProducts, allProducts } = useContext(AppContext);
 
-const Item = ( {product } ) => {
-
-  const { contador, setContador, products, setProducts, allProducts } = useContext(AppContext);
+  const onAdd = ( product, qty ) => {
+    //
+  }
 
   return (
     <div className="product-card" key={product.id}>
@@ -26,8 +28,7 @@ const Item = ( {product } ) => {
         </div>
         <div>
           <ItemCount
-            contador={contador}
-            setContador={setContador}
+            onAdd={ onAdd }
             initial={0}
             stock={5}
           />

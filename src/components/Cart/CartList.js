@@ -2,21 +2,20 @@ import React, { useContext } from "react";
 
 import { AppContext } from "../../context/AppContext";
 
-import './cart.css'
+import CartItem from "./CartItem";
+
+import "./cart.scss";
 
 function CartList() {
-  const {
-    product,
-  contador,
-  } = useContext(AppContext);
+  const { product, contador } = useContext(AppContext);
 
-  console.log(product)
-  console.log(contador)
+  console.log(product);
+  console.log(contador);
 
   return (
     <div>
       <p className="carrito-text">
-        `agregadas {contador} "unidades del producto " {product.title}`
+        <CartItem contador={contador} product={product} />
       </p>
     </div>
   );

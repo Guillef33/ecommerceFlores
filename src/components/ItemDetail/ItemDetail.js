@@ -2,36 +2,22 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./ItemDetail.scss";
-import Rate from "./Rate";
 
 import ItemCount from "../ItemListContainer/ItemCount";
 
 import { AppContext } from "../../context/AppContext";
 
-function ItemDetail(
-  // { product, stars }
-  ) {
-    // const appContext = useContext(AppContext);
-
-  const { product, stars, contador, setContador, showItem, agregado, setAgregado, onAdd } = useContext(AppContext);
-
-  
-  // const [agregado, setAgregado] = useState();
-  // const [showItem, setShowItem] = useState(true);
-
-  // const onAdd = () => {
-  //   setAgregado(product.id);
-  //   setContador(contador);
-  //   setShowItem(false);
-  //   console.log(
-  //     "agregadas",
-  //     contador,
-  //     "unidades del producto ",
-  //     product.title,
-  //     product.id
-  //   );
-  // };
-
+function ItemDetail() {
+  const {
+    product,
+    stars,
+    count,
+    setCount,
+    showItem,
+    addedToCart,
+    setaddedToCart,
+    onAdd,
+  } = useContext(AppContext);
 
   return (
     <div className="detail-container">
@@ -50,10 +36,10 @@ function ItemDetail(
               initial={0}
               stock={5}
               onAdd={onAdd}
-              contador={contador}
-              setContador={setContador}
-              setAgregado={setAgregado}
-              agregado={agregado}
+              count={count}
+              setCount={setCount}
+              setaddedToCart={setaddedToCart}
+              addedToCart={addedToCart}
             />
           ) : (
             "Sigue comprando"

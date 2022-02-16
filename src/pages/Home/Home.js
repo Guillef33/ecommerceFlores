@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { useParams } from "react-router-dom";
 
+import axios from "axios";
+
 import "../../components/ItemListContainer/ItemsListContainer.scss";
 import './home.scss';
 
@@ -11,7 +13,22 @@ import { AppContext } from "../../context/AppContext";
 
 const Home = ( ) => {
 
-    const { products, setProducts, allProducts } = useContext(AppContext);
+    const { products, setProducts } = useContext(AppContext);
+
+      useEffect(() => {
+        allProducts();
+      }, []);
+
+      const allProducts = async () => {
+        try {
+          axios(`https://fakestoreapi.com/products/`).then((res) => {
+            console.log(res);
+            setProducts(res.data);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
 
   return (
@@ -25,7 +42,7 @@ const Home = ( ) => {
         <div>
           {products.length ? (
             <Section
-              category="jewelery"
+              // category="jewelery"
               products={products}
               setProducts={setProducts}
             />

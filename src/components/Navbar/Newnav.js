@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 // import styles from "./NewNav.module.css";
 
-const Newnav = ({ contador, setContador }) => {
+const Newnav = ({ count, setCount }) => {
   const [showLinks, setShowLinks] = useState(true);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
@@ -58,7 +58,6 @@ const Newnav = ({ contador, setContador }) => {
 
             <Link to="/cart">
               <CartWidget 
-              // contador={contador} setContador={contador} 
               />
             </Link>
           </ul>

@@ -1,15 +1,19 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import "./contador.scss";
+import "./count.scss";
 
 import { AppContext } from "../../context/AppContext";
 
-const ItemCount = ( ) => {
-  const { product, showModal, stock, setShowItem, setShowModal, contador, setContador, setAddToCart, onAdd } =
+import Modal from "../Modal/Modal";
+
+const ItemCount = () => {
+  const { stock, setAddToCart, onAdd, showModal } =
     useContext(AppContext);
 
+  const [count, setCount] = useState(0);
 
+  console.log(showModal);
 
   return (
     <div className="buy-container">
@@ -17,25 +21,25 @@ const ItemCount = ( ) => {
         <p>Cantidad</p>
         <button
           onClick={() => {
-            if (contador === 0) {
-              setContador(0);
-            } else if (contador === stock) {
-              setContador(stock);
+            if (count === 0) {
+              setCount(0);
+            } else if (count === stock) {
+              setCount(stock);
             } else {
-              setContador(contador - 1);
+              setCount(count - 1);
             }
           }}
         >
           -
         </button>
-        <input value={contador} />
+        <input value={count} />
         <button
           onClick={() => {
-            if (contador === stock) {
+            if (count === stock) {
               alert("No tenemos mas stock de este producto");
-              setContador(stock);
+              setCount(stock);
             } else {
-              setContador(contador + 1);
+              setCount(count + 1);
             }
           }}
         >
@@ -43,9 +47,11 @@ const ItemCount = ( ) => {
         </button>
       </div>
 
-      <button className="btn-comprar" onClick={onAdd} agregado={setAddToCart}>
+      <button className="btn-comprar" onClick={onAdd} addToCart={setAddToCart}>
         Add to cart
       </button>
+{/* 
+      {showModal ? <Modal /> : ""} */}
     </div>
   );
 };
