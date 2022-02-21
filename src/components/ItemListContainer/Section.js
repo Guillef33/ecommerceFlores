@@ -5,13 +5,10 @@ import "./ItemsListContainer.scss";
 
 import { AppContext } from "../../context/AppContext";
 
-
 function Section() {
   const {
     products
   } = useContext(AppContext);
-
-
 
   return (
     <div className="products-container">

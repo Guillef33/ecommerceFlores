@@ -1,52 +1,55 @@
 import React, { useContext } from "react";
 
-import CartList from "./CartList";
+import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 
-import "../../assets/scss/base.scss";
+// import "../../assets/scss/base.scss";
+import "./cart.scss";
 
 import { AppContext } from "../../context/AppContext";
 
 function CartPage() {
-  const {
-    product,
-    onAdd,
-    addToCart,
-    setAddToCart,
-    addedToCart,
-    setaddedToCart,
-  } = useContext(AppContext);
+  const { product, onAdd, addToCart, cart, deleteCartById, deleteCart } =
+    useContext(AppContext);
 
-  console.log(addedToCart);
+  console.log(cart);
 
   return (
     <section>
-      <div className="base-layout">
+      <div className="cart-container">
         <h2>Tu carrito de compras</h2>
         <div className="table">
-          {addedToCart ? (
-            <>
-              <CartList />
-              <Link to={`/products/${product.id}`}>
-                <button className="btn-comprar">Volver atras</button>
-              </Link>
-              <Link to="/checkout">
-                <button
-                  className="btn-comprar"
-                  //  onClick={onAdd}
-                >
-                  Finalizar compra
-                </button>
-              </Link>
-            </>
+          {cart ? (
+            cart.map((producto) => {
+              return (
+                <CartItem
+                  key={producto.id}
+                  product={producto}
+                  deleteCartById={deleteCartById}
+                />
+              );
+            })
           ) : (
-            <div>
-              <p>El carrito esta vacio. vuelve atras y agrega mas productos</p>
-              <Link to={`/`}>
-                <button className="btn-comprar">Ir a comprar</button>
-              </Link>
-            </div>
+            <p>Cargando productos</p>
           )}
+
+          {cart.length ? (
+            <button className="btn-comprar" onClick={deleteCart}>
+              Vaciar Carrito
+            </button>
+          ) : (
+            <p>No hay productos en el carrito</p>
+          )}
+        </div>
+        <div className="bottom-cart">
+          <Link to="/checkout">
+            <button
+              className="btn-comprar"
+              //  onClick={onAdd}
+            >
+              Finalizar compra
+            </button>
+          </Link>
         </div>
       </div>
     </section>

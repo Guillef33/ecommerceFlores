@@ -3,17 +3,23 @@ import React, { useContext } from "react";
 import { TiDelete } from "react-icons/ti";
 
 import { AppContext } from "../../context/AppContext";
+import { CartContext } from "../../context/CartContext";
+
+import "./cart.scss";
 
 
-function CartItem(
-  ) {
-  const { product, count } = useContext(AppContext);
+function CartItem( { product, deleteCartById }) {
+  const { cart, count } = useContext(AppContext);
+  // const { productCart, deleteCartById } = useContext(CartContext);
+
+  // console.log(count);
 
   return (
     <article className="cart-item-card">
       <div
         className="cart-item__delete"
-        //  onClick={() => deleteCartById(item.id)}
+        // onClick={() => deleteCartById(product.id)}
+        onClick={() => deleteCartById(product.id)}
       >
         <TiDelete />
       </div>
@@ -27,10 +33,10 @@ function CartItem(
       <h2 className="cart-item__name">{product.title}</h2>
       <span className="cart-item__price">${product.price}</span>
       <span className="cart-item__qty">
-        <strong>Cantidad:</strong> {count}
+        <strong>Cantidad:</strong> {product.qty}
       </span>
       <span className="cart-item__qty">
-        <strong>Total:</strong> ${count * product.price}
+        <strong>Total:</strong> ${product.qty * product.price}
       </span>
     </article>
   );

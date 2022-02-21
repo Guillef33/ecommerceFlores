@@ -1,54 +1,60 @@
-import React, { useState, createContext } from "react";
+// import React, { useState, createContext } from "react";
 
-const CartContext = createContext(null);
+// export const CartContext = createContext(null);
 
-const CartProvider = (props) => {
-  const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
+// const CartProvider = (props) => {
+//   const [cart, setCart] = useState([]);
+//   const [total, setTotal] = useState(0);
 
-  const addToCart = (item, qty) => {
-    if (cart.some((el) => el.id === item.id)) {
-      let index = cart.findIndex((el) => el.id === item.id);
-      let product = cart[index];
-      product.qty = product.qty + qty;
+//     const [firebaseProducts, setFirebaseProducts] = useState([]);
 
-      const newCart = [...cart];
-      newCart.splice(index, 1, product);
 
-      setCart([...newCart]);
-    } 
-    // else {
-    //   let product = { ...item, qty };
-    //   setCart([...cart, product]);
-    // }
-  };
+//   const addToCart = (item, qty) => {
+//     if (cart.some((el) => el.id === item.id)) {
+//       let index = cart.findIndex((el) => el.id === item.id);
+//       let product = cart[index];
+//       product.qty = product.qty + qty;
 
-  const deleteCartById = (id) => {
-    const newCart = [...cart];
-    let index = newCart.findIndex((el) => el.id === id);
+//       const newCart = [...cart];
+//       newCart.splice(index, 1, product);
 
-    newCart.splice(index, 1);
+//       setCart([...newCart]);
+//     } 
+//     // else {
+//     //   let product = { ...item, qty };
+//     //   setCart([...cart, product]);
+//     // }
+//   };
 
-    setCart([...newCart]);
-  };
+//   const deleteCartById = (id) => {
+//     console.log('Click')
+//     const newCart = [...cart];
+//     let index = newCart.findIndex((el) => el.id === id);
 
-  const deleteCart = () => {
-    setCart([]);
-  };
+//     newCart.splice(index, 1);
 
-  return (
-    <CartContext.Provider
-      value={{
-        cart,
-        setCart,
-        addToCart,
-        deleteCartById,
-        deleteCart,
-      }}
-    >
-      {props.children}
-    </CartContext.Provider>
-  );
-};
+//     setCart([...newCart]);
+//   };
 
-export default CartProvider;
+//   const deleteCart = () => {
+//     setCart([]);
+//   };
+
+//   return (
+//     <CartContext.Provider
+//       value={{
+//         cart,
+//         setCart,
+//         addToCart,
+//         deleteCartById,
+//         deleteCart,
+//         firebaseProducts,
+//         setFirebaseProducts
+//       }}
+//     >
+//       {props.children}
+//     </CartContext.Provider>
+//   );
+// };
+
+// export default CartProvider;

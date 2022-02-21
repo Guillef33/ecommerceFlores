@@ -16,7 +16,6 @@ const Newnav = ({ count, setCount }) => {
 
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
-    // console.log(linksHeight);
     if (showLinks) {
       linksContainerRef.current.style.height = `${linksHeight}px`;
     } else {
@@ -54,7 +53,7 @@ const Newnav = ({ count, setCount }) => {
         </div>
         <div className="accountNav">
           <ul className="links">
-            <Link to="/account">Account</Link>
+            {/* <Link to="/account">Account</Link> */}
 
             <Link to="/cart">
               <CartWidget 

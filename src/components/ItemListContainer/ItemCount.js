@@ -7,11 +7,11 @@ import { AppContext } from "../../context/AppContext";
 
 import Modal from "../Modal/Modal";
 
-const ItemCount = () => {
-  const { stock, setAddToCart, onAdd, showModal } =
+const ItemCount = ({ onAdd }) => {
+  const { stock, setAddToCart, showModal } =
     useContext(AppContext);
 
-  const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
 
   console.log(showModal);
 
@@ -47,7 +47,7 @@ const ItemCount = () => {
         </button>
       </div>
 
-      <button className="btn-comprar" onClick={onAdd} addToCart={setAddToCart}>
+      <button className="btn-comprar" onClick={()=>{ onAdd( count ) }} addToCart={setAddToCart}>
         Add to cart
       </button>
 {/* 

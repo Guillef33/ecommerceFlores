@@ -38,7 +38,7 @@ function ItemDetailContainer() {
   };
 
   return <ItemDetail 
-  // product={product} stars={stars}
+  product={product} stars={stars}
    />;
 }
 export default ItemDetailContainer;

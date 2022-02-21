@@ -8,12 +8,13 @@ import ItemCount from "../ItemListContainer/ItemCount";
 import { AppContext } from "../../context/AppContext";
 
 function ItemDetail({ product }) {
-  const appContext = useContext(AppContext);
-
-  const { stars, count, setCount, showItem, addToCart } =
-    useContext(AppContext);
-
-  // const { addToCart } = appContext;
+  const { 
+    stars,
+    count,
+    setCount,
+    showItem,
+    addToCart
+  } = useContext(AppContext);
 
   //Agregar el onAdd para subir al carrito
 
@@ -21,6 +22,7 @@ function ItemDetail({ product }) {
      console.log({ ...product, qty });
      addToCart({ ...product, qty });
    };
+
 
   return (
     <div className="detail-container">
@@ -35,7 +37,12 @@ function ItemDetail({ product }) {
         <div>{stars}</div>
         <div className="buy-actions">
           {showItem ? (
-            <ItemCount initial={0} stock={5} onAdd={onAdd} />
+            <ItemCount
+              initial={0}
+              stock={5}
+              onAdd={onAdd}
+              setCount={setCount}
+            />
           ) : (
             "Sigue comprando"
           )}
