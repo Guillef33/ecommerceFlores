@@ -5,16 +5,11 @@ import "./ItemDetail.scss";
 
 import ItemCount from "../ItemListContainer/ItemCount";
 
-import { AppContext } from "../../context/AppContext";
+import { CartContext } from "../../context/CartContext";
 
 function ItemDetail({ product }) {
-  const { 
-    stars,
-    count,
-    setCount,
-    showItem,
-    addToCart
-  } = useContext(AppContext);
+  const { stars, count, setCount, showItem, addToCart } =
+    useContext(CartContext);
 
   //Agregar el onAdd para subir al carrito
 

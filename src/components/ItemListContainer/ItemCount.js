@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 
 import "./count.scss";
 
-import { AppContext } from "../../context/AppContext";
+import { CartContext } from "../../context/CartContext";
 
 import Modal from "../Modal/Modal";
 
-const ItemCount = ({ onAdd }) => {
-  const { stock, setAddToCart, showModal } =
-    useContext(AppContext);
+const ItemCount = ({ onAdd, stock }) => {
+  const { setAddToCart, showModal } = useContext(CartContext);
 
     const [count, setCount] = useState(0);
 
-  console.log(showModal);
+  // console.log(showModal);
 
   return (
     <div className="buy-container">

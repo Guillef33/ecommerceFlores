@@ -3,10 +3,9 @@ import ItemFirebase from "./ItemFirebase";
 
 import "./ItemsListContainer.scss";
 
-import { AppContext } from "../../context/AppContext";
+// import { CartContext } from "../../context/CartContext";
 
 function ItemListContainer({ firebaseProducts, setFirebaseProducts }) {
-  //   const { products } = useContext(AppContext);
 
   return (
     <div className="products-container">

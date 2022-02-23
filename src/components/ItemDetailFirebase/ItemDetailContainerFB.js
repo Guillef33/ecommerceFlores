@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-import { AppContext } from "../../context/AppContext";
+import { CartContext } from "../../context/CartContext";
 
 
 import { db } from "./config.js";
@@ -22,7 +22,7 @@ function ItemDetailContainerFB() {
       firebaseProducts,
       setFirebaseProducts,
       stars,
-    } = useContext(AppContext);
+    } = useContext(CartContext);
 
   const { id } = useParams();
 

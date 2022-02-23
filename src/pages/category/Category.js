@@ -2,15 +2,12 @@ import React, { useState, useEffect, useContext} from "react";
 
 import { useParams } from "react-router-dom";
 
-
-import Section from "../../components/ItemListContainer/Section";
-
 import "./category.scss";
 
-import { AppContext } from "../../context/AppContext";
+import { CartContext } from "../../context/CartContext";
 
 function CatElectronicos() {
-  const { products, setProducts } = useContext(AppContext);
+  const { products, setProducts } = useContext(CartContext);
 
    const { nameCategory } = useParams();
 
@@ -37,7 +34,7 @@ function CatElectronicos() {
       </div>
 
       <div>
-        {products.length ? <Section products={products} /> : <p>Loading</p>}
+        {/* {products.length ? <Section products={products} /> : <p>Loading</p>} */}
       </div>
     </section>
   );

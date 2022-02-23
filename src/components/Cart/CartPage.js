@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 // import "../../assets/scss/base.scss";
 import "./cart.scss";
 
-import { AppContext } from "../../context/AppContext";
+import { CartContext } from "../../context/CartContext";
 
 function CartPage() {
-  const { product, onAdd, addToCart, cart, deleteCartById, deleteCart } =
-    useContext(AppContext);
+  const { cart, deleteCartById, deleteCart } =
+    useContext(CartContext);
 
   console.log(cart);
 

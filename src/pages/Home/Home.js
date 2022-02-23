@@ -2,28 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { useParams } from "react-router-dom";
 
-import axios from "axios";
+import ItemListContainer from '../../components/ItemListContainer/ItemListContainer'
 
 import "../../components/ItemListContainer/ItemsListContainer.scss";
 import "./home.scss";
 
-import Section from "../../components/ItemListContainer/Section";
-import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
-
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-import { AppContext } from "../../context/AppContext";
 import { CartContext } from "../../context/CartContext";
 
 const Home = () => {
-  const { products, setProducts } =
-    useContext(AppContext);
+  const { firebaseProducts, setFirebaseProducts } = useContext(CartContext);
 
-    const [firebaseProducts, setFirebaseProducts] = useState( [] );
- 
-  // FireBaseProducts
-  // const ppContext = useContext(AppContext);
   // const [] = useState([]);
 
   useEffect(() => {
@@ -42,42 +33,15 @@ const Home = () => {
     getJuegos();
   }, []);
 
-  // useEffect(() => {
-  //   allProducts();
-  // }, []);
-
-  // const allProducts = async () => {
-  //   try {
-  //     axios(`https://fakestoreapi.com/products/`).then((res) => {
-  //       console.log(res);
-  //       setProducts(res.data);
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <>
       <div className="header-home">
         {/* <h2>Bienvenido</h2> */}
         <h2>Los mejores juegos para divertirse con amigos y familia</h2>
       </div>
-      {/* <div className="product-container">
-        {products.length ? (
-          <Section
-            // category="jewelery"
-            products={products}
-            setProducts={setProducts}
-          />
-        ) : (
-          <p>Loading</p>
-        )}
-      </div> */}
       <div>
         {firebaseProducts.length ? (
           <ItemListContainer
-            // category="jewelery"
             firebaseProducts={firebaseProducts}
             setFirebaseProducts={setFirebaseProducts}
           />

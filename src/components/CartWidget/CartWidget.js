@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import "./CartWidget.scss";
 import { FiShoppingCart } from "react-icons/fi";
 
-import { AppContext } from "../../context/AppContext";
+import { CartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
-  const { cart  } = useContext(AppContext);
+  const { cart } = useContext(CartContext);
 
   console.log(cart);
 

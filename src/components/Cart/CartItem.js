@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 
 import { TiDelete } from "react-icons/ti";
 
-import { AppContext } from "../../context/AppContext";
 import { CartContext } from "../../context/CartContext";
 
 import "./cart.scss";
 
 
 function CartItem( { product, deleteCartById }) {
-  const { cart, count } = useContext(AppContext);
+  const { cart, count } = useContext(CartContext);
   // const { productCart, deleteCartById } = useContext(CartContext);
 
   // console.log(count);
