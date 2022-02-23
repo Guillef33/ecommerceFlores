@@ -8,23 +8,18 @@ export const links = [
   },
   {
     id: 2,
-    url: "category/men's clothing",
-    text: "men",
+    url: "/category/mesa",
+    text: "juegos de mesa",
   },
   {
     id: 3,
-    url: "/category/women's clothing",
-    text: "woman",
+    url: "/category/dos",
+    text: "2 jugadores",
   },
   {
     id: 4,
-    url: "/category/electronics",
-    text: "electronics",
-  },
-  {
-    id: 5,
-    url: "/category/jewelery",
-    text: "jewelery",
+    url: "/category/grupal",
+    text: "juego grupal",
   },
 ];
 

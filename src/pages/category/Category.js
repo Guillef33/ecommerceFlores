@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -6,26 +6,39 @@ import "./category.scss";
 
 import { CartContext } from "../../context/CartContext";
 
-function CatElectronicos() {
-  const { products, setProducts } = useContext(CartContext);
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  documentId,
+} from "firebase/firestore";
+import { db } from "../firebase/config";
+import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
 
-   const { nameCategory } = useParams();
+function CategoryPage() {
+  const { nameCategory } = useParams();
 
-   useEffect(() => {
-     GetCategory(nameCategory);
-   }, [nameCategory]);
+  const { firebaseProducts, setFirebaseProducts } = useContext(CartContext);
 
-   const GetCategory = async (nameCat) => {
-     try {
-       const response = await fetch(
-         `https://fakestoreapi.com/products/category/${nameCat}`
-       );
-       const data = await response.json();
-       setProducts(data);
-     } catch (error) {
-       console.log(error);
-     }
-   };
+  // const [] = useState([]);
+
+  useEffect(() => {
+    const getJuegos = async () => {
+      const q = query(
+        collection(db, "products"),
+        where("categoria", "==", nameCategory)
+      );
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(docs);
+      setFirebaseProducts(docs);
+    };
+    getJuegos();
+  }, [nameCategory]);
 
   return (
     <section>
@@ -34,10 +47,17 @@ function CatElectronicos() {
       </div>
 
       <div>
-        {/* {products.length ? <Section products={products} /> : <p>Loading</p>} */}
+        {firebaseProducts.length ? (
+          <ItemListContainer
+            firebaseProducts={firebaseProducts}
+            setFirebaseProducts={setFirebaseProducts}
+          />
+        ) : (
+          <p>Loading</p>
+        )}
       </div>
     </section>
   );
 }
 
-export default CatElectronicos;
+export default CategoryPage;
