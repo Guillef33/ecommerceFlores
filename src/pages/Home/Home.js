@@ -17,42 +17,45 @@ import { AppContext } from "../../context/AppContext";
 import { CartContext } from "../../context/CartContext";
 
 const Home = () => {
-  const { products, setProducts } = useContext(AppContext);
+  const { products, setProducts } =
+    useContext(AppContext);
 
+    const [firebaseProducts, setFirebaseProducts] = useState( [] );
+ 
   // FireBaseProducts
-  // const cartContext = useContext(CartContext);
-  // const { firebaseProducts, setFirebaseProducts, stars } = cartContext;
-
-  // useEffect(() => {
-  //   const getJuegos = async () => {
-  //     const q = query(collection(db, "products"));
-  //     const docs = [];
-  //     const querySnapshot = await getDocs(q);
-  //     //   console.log(querySnapshot);
-  //     querySnapshot.forEach((doc) => {
-  //       // console.log(doc.id, " => ", doc.data());
-  //       docs.push({ ...doc.data(), id: doc.id });
-  //     });
-  //     //   console.log(docs)
-  //     setFirebaseProducts(docs);
-  //   };
-  //   getJuegos();
-  // }, []);
+  // const ppContext = useContext(AppContext);
+  // const [] = useState([]);
 
   useEffect(() => {
-    allProducts();
+    const getJuegos = async () => {
+      const q = query(collection(db, "products"));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+      //   console.log(querySnapshot);
+      querySnapshot.forEach((doc) => {
+        // console.log(doc.id, " => ", doc.data());
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      //   console.log(docs)
+      setFirebaseProducts(docs);
+    };
+    getJuegos();
   }, []);
 
-  const allProducts = async () => {
-    try {
-      axios(`https://fakestoreapi.com/products/`).then((res) => {
-        console.log(res);
-        setProducts(res.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // useEffect(() => {
+  //   allProducts();
+  // }, []);
+
+  // const allProducts = async () => {
+  //   try {
+  //     axios(`https://fakestoreapi.com/products/`).then((res) => {
+  //       console.log(res);
+  //       setProducts(res.data);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
@@ -60,7 +63,7 @@ const Home = () => {
         {/* <h2>Bienvenido</h2> */}
         <h2>Los mejores juegos para divertirse con amigos y familia</h2>
       </div>
-      <div className="product-container">
+      {/* <div className="product-container">
         {products.length ? (
           <Section
             // category="jewelery"
@@ -70,18 +73,18 @@ const Home = () => {
         ) : (
           <p>Loading</p>
         )}
+      </div> */}
+      <div>
+        {firebaseProducts.length ? (
+          <ItemListContainer
+            // category="jewelery"
+            firebaseProducts={firebaseProducts}
+            setFirebaseProducts={setFirebaseProducts}
+          />
+        ) : (
+          <p>Loading</p>
+        )}
       </div>
-      {/* <div>
-          {firebaseProducts.length ? (
-            <ItemListContainer
-              // category="jewelery"
-              firebaseProducts={firebaseProducts}
-              setFirebaseProducts={setFirebaseProducts}
-            />
-          ) : (
-            <p>Loading</p>
-          )}
-        </div> */}
     </>
   );
 };

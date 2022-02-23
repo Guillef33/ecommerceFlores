@@ -8,8 +8,17 @@ import "./ItemsListContainer.scss";
 import { AppContext } from "../../context/AppContext";
 
 const ItemFirebase = ({ product }) => {
-  const { products, setProducts, allProducts, addToCart } =
-    useContext(AppContext);
+  const {
+    firebaseProducts,
+    setFirebaseProduces, 
+    products,
+    setProducts,
+    allProducts,
+    addToCart,
+  } = useContext(AppContext);
+
+      // const [firebaseProducts, setFirebaseProduces] = useState([]);
+
 
   const onAdd = (qty) => {
     console.log({ ...product, qty });

@@ -17,10 +17,10 @@ function ItemDetail({ product }) {
 
   //Agregar el onAdd para subir al carrito
 
-   const onAdd = (qty) => {
-     console.log({ ...product, qty });
-     addToCart({ ...product, qty });
-   };
+  const onAdd = (qty) => {
+    console.log({ ...product, qty });
+    addToCart({ ...product, qty });
+  };
 
   return (
     <div className="detail-container">
@@ -39,9 +39,11 @@ function ItemDetail({ product }) {
           ) : (
             "Sigue comprando"
           )}
-          <Link to="/cart">
-            <button className="btn-comprar">Ir al carrito</button>{" "}
-          </Link>
+          <button>
+            <Link to="/cart" className="btn-add-to-cart-detail">
+              Ir al carrito
+            </Link>
+          </button>
         </div>
       </div>
     </div>

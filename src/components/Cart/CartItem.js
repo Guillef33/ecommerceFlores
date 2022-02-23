@@ -25,7 +25,7 @@ function CartItem( { product, deleteCartById }) {
       </div>
       <div className="cart-item__img">
         <img
-          src={product.image}
+          src={product.imageId}
           alt="imagen pequena"
           style={{ width: "100px" }}
         />
