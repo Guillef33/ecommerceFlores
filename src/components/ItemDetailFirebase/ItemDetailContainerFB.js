@@ -7,16 +7,22 @@ import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-import { CartContext } from "../../context/CartContext";
+import { AppContext } from "../../context/AppContext";
 
 
 import { db } from "./config.js";
 
 function ItemDetailContainerFB() {
 
-  const cartContext = useContext(CartContext);
+  // const cartContext = useContext(CartContext);
 
-  const { cart, firebaseProducts, setFirebaseProducts, stars } = cartContext;
+    const {
+      products,
+      setProducts,
+      firebaseProducts,
+      setFirebaseProducts,
+      stars,
+    } = useContext(AppContext);
 
   const { id } = useParams();
 

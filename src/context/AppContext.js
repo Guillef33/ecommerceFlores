@@ -13,58 +13,46 @@ function AppProvider(props) {
   const [showItem, setShowItem] = useState(true);
   // productos que se agregan al carrito
   const [cart, setCart] = useState([]);
-
   // const [showModal, setShowModal] = useState(false);
   // productos que vienen de Firebase
   const [firebaseProducts, setFirebaseProduces] = useState([]);
 
   const addToCart = (newProduct) => {
+    console.log(newProduct);
+
     if (!cart.length) {
       setCart([newProduct]);
     } else {
+      // Preguntas si existe en el carrito un producto que tenga el mismo id que el que se va a agregar
       if (cart.some((el) => el.id === newProduct.id)) {
+        // crear una variable index que se corresponde a la posicion del producto que ya esta en el carrito
         let index = cart.findIndex((el) => el.id === newProduct.id);
+        // en product guardamos la referencia a ese producto guardado del carrito (index)
         let product = cart[index];
-        product.qty = cart.qty + newProduct.id;
+        // Solo modifico la cantidad de ese producto
+        product.qty = cart.qty + newProduct.qty;
         const newCart = [...cart];
         newCart.splice(index, 1, product);
         setCart([...newCart]);
       } else {
         setCart([...cart, newProduct]);
       }
-    }
-
-    //     useEffect(() => {
-    //   const getJuegos = async () => {
-    //     const q = query(collection(db, "products"));
-    //     const docs = [];
-    //     const querySnapshot = await getDocs(q);
-    //   //   console.log(querySnapshot);
-    //     querySnapshot.forEach((doc) => {
-    //       console.log(doc.id, " => ", doc.data());
-    //       docs.push( { ...doc.data(), id: doc.id});
-    //     });
-    //     console.log(docs)
-    //     setFirebaseProducts(docs)
-    //   };
-    //   getJuegos();
-    // }, []);
+    } 
   };
 
-   const deleteCartById = (id) => {
-     console.log("Click");
-     const newCart = [...cart];
-     let index = newCart.findIndex((el) => el.id === id);
+  const deleteCartById = (id) => {
+    console.log("Click");
+    const newCart = [...cart];
+    let index = newCart.findIndex((el) => el.id === id);
 
-     newCart.splice(index, 1);
+    newCart.splice(index, 1);
 
-     setCart([...newCart]);
-   };
+    setCart([...newCart]);
+  };
 
-   const deleteCart = () => {
-     setCart([]);
-   };
-
+  const deleteCart = () => {
+    setCart([]);
+  };
 
   return (
     <AppContext.Provider
@@ -85,7 +73,7 @@ function AppProvider(props) {
         firebaseProducts,
         setFirebaseProduces,
         deleteCartById,
-        deleteCart
+        deleteCart,
       }}
     >
       {props.children}
