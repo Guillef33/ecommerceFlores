@@ -9,8 +9,6 @@ import { CartContext } from "../../context/CartContext";
 
 const ItemFirebase = ({ product }) => {
   const {
-    firebaseProducts,
-    setFirebaseProduces,
     addToCart,
   } = useContext(CartContext);
 
@@ -24,7 +22,7 @@ const ItemFirebase = ({ product }) => {
 
   return (
     <div className="product-card" key={product.id}>
-      <Link to={`/firebaseproducts/${product.id}`}>
+      <Link to={`/detalle/${product.id}`}>
         <div className="card-header">
           <img src={product.imageId} alt="camisa" />
         </div>

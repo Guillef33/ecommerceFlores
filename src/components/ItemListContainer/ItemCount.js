@@ -5,7 +5,7 @@ import "./count.scss";
 
 import { CartContext } from "../../context/CartContext";
 
-import Modal from "../Modal/Modal";
+// import Modal from "../Modal/Modal";
 
 const ItemCount = ({ onAdd, stock }) => {
   const { setAddToCart, showModal } = useContext(CartContext);

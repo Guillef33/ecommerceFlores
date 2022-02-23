@@ -22,7 +22,7 @@ function ItemDetail({ product }) {
   return (
     <div className="detail-container">
       <div className="detail-image">
-        <img src={product.image} alt={product.id} className="image-detail" />
+        <img src={product.imageId} alt={product.id} className="image-detail" />
       </div>
       <div className="detail-content">
         <p className="detail-category">{product.category}</p>

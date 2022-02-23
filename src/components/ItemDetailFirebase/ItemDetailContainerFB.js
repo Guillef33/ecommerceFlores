@@ -1,54 +1,55 @@
 import React, { useEffect, useState, useContext } from "react";
-import ItemDetailFB from "./ItemDetailFB";
 import { useParams } from "react-router-dom";
 
-// import { AppContext } from "../../context/AppContext";
+import ItemDetailFB from "./ItemDetailFB";
 
-import { FaStar } from "react-icons/fa";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  documentId,
+} from "firebase/firestore";
+import { db } from "./config.js";
 
 import { CartContext } from "../../context/CartContext";
 
-
-import { db } from "./config.js";
-
 function ItemDetailContainerFB() {
+  const { firebaseProducts, setFirebaseProducts, stars } =
+    useContext(CartContext);
 
-  // const cartContext = useContext(CartContext);
+  // const [juegoData, setJuegoData] = useState([]);
 
-    const {
-      products,
-      setProducts,
-      firebaseProducts,
-      setFirebaseProducts,
-      stars,
-    } = useContext(CartContext);
+  console.log(firebaseProducts);
+
+  // console.log('hola')
 
   const { id } = useParams();
 
+  useEffect(() => {
+    const getJuegos = async () => {
+      const q = query(
+        collection(db, "products"),
+        where(documentId(), "==", id)
+      );
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setFirebaseProducts(docs);
+    };
+    getJuegos();
+  }, []);
 
-   useEffect(() => {
-     const getJuegos = async () => {
-       const q = query(
-         collection(db, "products")
-           .doc(id)
-           .get()
-       );
-
-      
-       const docs = [];
-       const querySnapshot = await getDocs(q);
-       //   console.log(querySnapshot);
-       querySnapshot.forEach((doc) => {
-         // console.log(doc.id, " => ", doc.data());
-         docs.push({ ...doc.data(), id: doc.id });
-       });
-       //   console.log(docs)
-       setFirebaseProducts(docs);
-     };
-     getJuegos(id);
-   }, []);
-
-  return <ItemDetailFB firebaseProducts={firebaseProducts} stars={stars} />;
+  return (
+    <>
+      {firebaseProducts.map((product) => {
+        return (
+          <ItemDetailFB product={product} stars={stars} key={product.id} />
+        );
+      })}
+    </>
+  );
 }
 export default ItemDetailContainerFB;

@@ -10,20 +10,18 @@ import ItemDetailContainerFB from "../components/ItemDetailFirebase/ItemDetailCo
 import Newnav from "../components/Navbar/Newnav";
 import Category from "../pages/category/Category";
 
-import { CartContext } from "../context/CartContext";
-
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Newnav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
         <Route path="/cart" element={<CartPage />} />
         <Route path="category/:nameCategory" element={<Category />} />
 
         <Route
-          path="firebaseprodycts/:id"
+          path="detalle/:id"
           element={<ItemDetailContainerFB />}
         />
       </Routes>

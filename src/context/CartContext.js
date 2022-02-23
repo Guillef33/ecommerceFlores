@@ -8,20 +8,33 @@ const CartProvider = (props) => {
   // Estrellas para la pagina de detail
   const [stars, setStars] = useState();
 
+    const [showItem, setShowItem] = useState(true);
+
+
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
   const [firebaseProducts, setFirebaseProducts] = useState([]);
 
-  const addToCart = (item, qty) => {
-    if (cart.some((el) => el.id === item.id)) {
-      let index = cart.findIndex((el) => el.id === item.id);
-      let product = cart[index];
-      product.qty = product.qty + qty;
+  const addToCart = (newProduct) => {
+    console.log(newProduct);
 
-      const newCart = [...cart];
-      newCart.splice(index, 1, product);
-
-      setCart([...newCart]);
+    if (!cart.length) {
+      setCart([newProduct]);
+    } else {
+      // Preguntas si existe en el carrito un producto que tenga el mismo id que el que se va a agregar
+      if (cart.some((el) => el.id === newProduct.id)) {
+        // crear una variable index que se corresponde a la posicion del producto que ya esta en el carrito
+        let index = cart.findIndex((el) => el.id === newProduct.id);
+        // en product guardamos la referencia a ese producto guardado del carrito (index)
+        let product = cart[index];
+        // Solo modifico la cantidad de ese producto
+        product.qty = cart.qty + newProduct.qty;
+        const newCart = [...cart];
+        newCart.splice(index, 1, product);
+        setCart([...newCart]);
+      } else {
+        setCart([...cart, newProduct]);
+      }
     }
   };
 
@@ -53,6 +66,8 @@ const CartProvider = (props) => {
         deleteCart,
         firebaseProducts,
         setFirebaseProducts,
+        showItem,
+        setShowItem
       }}
     >
       {props.children}

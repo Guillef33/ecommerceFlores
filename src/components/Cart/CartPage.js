@@ -9,10 +9,9 @@ import "./cart.scss";
 import { CartContext } from "../../context/CartContext";
 
 function CartPage() {
-  const { cart, deleteCartById, deleteCart } =
-    useContext(CartContext);
+  const { cart, deleteCartById, deleteCart } = useContext(CartContext);
 
-  console.log(cart);
+  // console.log(cart);
 
   return (
     <section>
