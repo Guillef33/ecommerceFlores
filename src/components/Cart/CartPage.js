@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useReducer } from "react";
 
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
@@ -9,30 +9,39 @@ import "./cart.scss";
 import { CartContext } from "../../context/CartContext";
 
 function CartPage() {
-  const { cart, deleteCartById, deleteCart } = useContext(CartContext);
+  const { cart, deleteCartById, deleteCart, total } =
+    useContext(CartContext);
 
-  // console.log(cart);
+  // const [state, dispatch] = useReducer(shoppingReducer, initialState, init)
+
+  console.log(cart);
+
+  
+
 
   return (
     <section>
       <div className="cart-container">
         <h2>Tu carrito de compras</h2>
         <div className="table">
+          <h2>Total: {total}</h2>
           {cart ? (
             cart.map((producto) => {
               return (
-                <CartItem
-                  key={producto.id}
-                  product={producto}
-                  deleteCartById={deleteCartById}
-                />
+                <>
+                  <CartItem
+                    key={producto.id}
+                    product={producto}
+                    deleteCartById={deleteCartById}
+                  />
+                </>
               );
             })
           ) : (
             <p>Cargando productos</p>
           )}
 
-          {cart.length ? (
+          {cart ? (
             <button className="btn-comprar" onClick={deleteCart}>
               Vaciar Carrito
             </button>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { useParams } from "react-router-dom";
 
-import ItemListContainer from '../../components/ItemListContainer/ItemListContainer'
+import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
 
 import "../../components/ItemListContainer/ItemsListContainer.scss";
 import "./home.scss";
@@ -13,7 +13,8 @@ import { db } from "../firebase/config";
 import { CartContext } from "../../context/CartContext";
 
 const Home = () => {
-  const { firebaseProducts, setFirebaseProducts } = useContext(CartContext);
+  const { firebaseProducts, setFirebaseProducts, isLoading, setIsLoading } =
+    useContext(CartContext);
 
   // const [] = useState([]);
 
@@ -31,6 +32,9 @@ const Home = () => {
       setFirebaseProducts(docs);
     };
     getJuegos();
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    // }, 500);
   }, []);
 
   return (
@@ -39,16 +43,24 @@ const Home = () => {
         {/* <h2>Bienvenido</h2> */}
         <h2>Los mejores juegos para divertirse con amigos y familia</h2>
       </div>
-      <div>
-        {firebaseProducts.length ? (
-          <ItemListContainer
-            firebaseProducts={firebaseProducts}
-            setFirebaseProducts={setFirebaseProducts}
-          />
-        ) : (
-          <p>Loading</p>
-        )}
-      </div>
+      {/* {!isLoading ? (
+        <h2>Loading</h2>
+      ) : ( */}
+      <>
+        <div>
+          {firebaseProducts.length ? (
+            <ItemListContainer
+              firebaseProducts={firebaseProducts}
+              setFirebaseProducts={setFirebaseProducts}
+            />
+          ) : (
+            <div>
+              <p>Loading</p>
+            </div>
+          )}
+        </div>
+      </>
+      {/* // )} */}
     </>
   );
 };
