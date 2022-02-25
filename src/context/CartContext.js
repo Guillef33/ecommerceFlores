@@ -69,8 +69,6 @@ const CartProvider = (props) => {
         cart,
         setCart,
         product,
-        stars,
-        setStars,
         setProduct,
         addToCart,
         deleteCartById,
