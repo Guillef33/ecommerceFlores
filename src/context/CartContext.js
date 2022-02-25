@@ -8,7 +8,7 @@ const CartProvider = (props) => {
   // Producto individual para la pagina de detail
   const [product, setProduct] = useState({});
   // Estrellas para la pagina de detail
-  const [stars, setStars] = useState();
+  // const [stars, setStars] = useState();
 
   const [showItem, setShowItem] = useState(true);
 
