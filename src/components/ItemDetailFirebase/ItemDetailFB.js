@@ -5,19 +5,29 @@ import "./ItemDetail.scss";
 
 import ItemCount from "../ItemListContainer/ItemCount";
 
+import { Button } from "@mui/material";
+
 import { CartContext } from "../../context/CartContext";
 
 function ItemDetail({ product }) {
-  const { stars, count, setCount, showItem, addToCart } =
-    useContext(CartContext);
+  const {
+    stars,
+    setCount,
+    showItem,
+    addToCart,
+    setIsCartPage,
+  } = useContext(CartContext);
 
-  //Agregar el onAdd para subir al carrito
+  const onAdd = (qty) => {
+    console.log({ ...product, qty });
+    addToCart({ ...product, qty });
+  };
 
-   const onAdd = (qty) => {
-     console.log({ ...product, qty });
-     addToCart({ ...product, qty });
-   };
-
+  useEffect(() => {
+    return () => {
+      setIsCartPage(true);
+    };
+  }, []);
 
   return (
     <div className="detail-container">
@@ -42,7 +52,7 @@ function ItemDetail({ product }) {
             "Sigue comprando"
           )}
           <Link to="/cart">
-            <button className="btn-comprar">Ir al carrito</button>{" "}
+            <Button variant="outlined"> Ir al carrito </Button>
           </Link>
         </div>
       </div>

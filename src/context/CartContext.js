@@ -1,5 +1,7 @@
 import React, { useState, createContext } from "react";
 
+import swal from "sweetalert";
+
 export const CartContext = createContext(null);
 
 const CartProvider = (props) => {
@@ -15,6 +17,8 @@ const CartProvider = (props) => {
   const [firebaseProducts, setFirebaseProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isCartPage, setIsCartPage] = useState(false);
+
   const addToCart = (newProduct) => {
     console.log(newProduct);
 
@@ -25,7 +29,6 @@ const CartProvider = (props) => {
         let index = cart.findIndex((el) => el.id === newProduct.id);
         let product = cart[index];
         product.qty = cart.qty + newProduct.qty;
-        // let subtotal = product.qty * product.price;
         const newCart = [...cart];
         newCart.splice(index, 1, product);
         setCart([...newCart]);
@@ -35,18 +38,10 @@ const CartProvider = (props) => {
     }
   };
 
-
-
-  // const initialCart = 0;
-
-  // const precio = cart.price;
   const total = cart.reduce((previousValue, currentValue) => {
     let subtotal = currentValue.qty * currentValue.price;
     return previousValue + subtotal;
   }, 0);
-
-  // const cantidad = 
-
 
   const deleteCartById = (id) => {
     console.log("Click");
@@ -59,6 +54,12 @@ const CartProvider = (props) => {
   };
 
   const deleteCart = () => {
+    swal({
+      title: "Cuidado! ",
+      text: "Estas seguro que deseas borrar todo lo que agregaste?",
+      icon: "warning",
+      button: "Si",
+    });
     setCart([]);
   };
 
@@ -81,6 +82,8 @@ const CartProvider = (props) => {
         isLoading,
         setIsLoading,
         total,
+        isCartPage,
+        setIsCartPage,
       }}
     >
       {props.children}

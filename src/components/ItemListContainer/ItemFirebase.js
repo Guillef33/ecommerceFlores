@@ -24,7 +24,7 @@ const ItemFirebase = ({ product }) => {
     <div className="product-card" key={product.id}>
       <Link to={`/detalle/${product.id}`}>
         <div className="card-header">
-          <img src={product.imageId} alt="camisa" />
+          <img src={product.imageId} alt="imagen de producto" />
         </div>
       </Link>
       <div className="card-body">

@@ -1,16 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars, FaBeer, FaTwitter } from "react-icons/fa";
+
 import { links, social } from "./data";
+import { Link } from "react-router-dom";
+
+import Logo from '../../assets/images/LogoHome-01.png'
 
 import CartWidget from "../CartWidget/CartWidget";
 
 import "./NewNav.scss";
-import { Link } from "react-router-dom";
+
 
 // import styles from "./NewNav.module.css";
 
 const Newnav = ({ count, setCount }) => {
-  const [showLinks, setShowLinks] = useState(true);
+  const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
 
@@ -28,7 +32,7 @@ const Newnav = ({ count, setCount }) => {
       <div className="nav-center">
         <div className="nav-header">
           <Link to={"/"}>
-            <FaBeer className="faBeer" />
+            <img src={Logo} alt='Logo Home' className="homeLogo" />
           </Link>
           <button
             className="nav-toggle"

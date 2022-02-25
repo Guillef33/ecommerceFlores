@@ -9,9 +9,6 @@ import "./cart.scss";
 
 function CartItem( { product, deleteCartById }) {
   const { cart, count } = useContext(CartContext);
-  // const { productCart, deleteCartById } = useContext(CartContext);
-
-  // console.log(count);
 
   return (
     <article className="cart-item-card">
@@ -20,7 +17,7 @@ function CartItem( { product, deleteCartById }) {
         // onClick={() => deleteCartById(product.id)}
         onClick={() => deleteCartById(product.id)}
       >
-        <TiDelete />
+        <TiDelete className="cart-icon__delete"/>
       </div>
       <div className="cart-item__img">
         <img

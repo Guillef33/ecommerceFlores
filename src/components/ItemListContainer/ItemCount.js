@@ -3,22 +3,26 @@ import { Link } from "react-router-dom";
 
 import "./count.scss";
 
+import { Button } from "@mui/material";
+
+import swal from "sweetalert";
+
 import { CartContext } from "../../context/CartContext";
 
 // import Modal from "../Modal/Modal";
 
 const ItemCount = ({ onAdd, stock }) => {
-  const { setAddToCart, showModal } = useContext(CartContext);
+  const { setAddToCart, isCartPage } = useContext(CartContext);
 
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   // console.log(showModal);
 
   return (
-    <div className="buy-container">
+    <div className={isCartPage ? "buy-container" : "buy-cart"}>
       <div className="contador-container">
-        <p>Cantidad</p>
-        <button
+        <Button
+          variant="outlined"
           onClick={() => {
             if (count === 0) {
               setCount(0);
@@ -30,12 +34,17 @@ const ItemCount = ({ onAdd, stock }) => {
           }}
         >
           -
-        </button>
+        </Button>
         <input value={count} />
-        <button
+        <Button
           onClick={() => {
             if (count === stock) {
-              alert("No tenemos mas stock de este producto");
+              swal({
+                title: "Lo sentimos!",
+                text: "No tenemos suficiente stock",
+                icon: "warning",
+                button: "Seguir comprando!",
+              });
               setCount(stock);
             } else {
               setCount(count + 1);
@@ -43,14 +52,23 @@ const ItemCount = ({ onAdd, stock }) => {
           }}
         >
           +
-        </button>
+        </Button>
       </div>
-
-      <button className="btn-comprar" onClick={()=>{ onAdd( count ) }} addToCart={setAddToCart}>
-        Add to cart
-      </button>
-{/* 
-      {showModal ? <Modal /> : ""} */}
+      <Button
+        variant="contained"
+        onClick={() => {
+          onAdd(count);
+          swal({
+            title: "Excelente!",
+            text: "Producto agregado al carrito",
+            icon: "success",
+            button: "Seguir comprando!",
+          });
+        }}
+        addToCart={setAddToCart}
+      >
+        Add To Cart
+      </Button>
     </div>
   );
 };

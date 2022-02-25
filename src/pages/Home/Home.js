@@ -12,11 +12,14 @@ import { db } from "../firebase/config";
 
 import { CartContext } from "../../context/CartContext";
 
+import { Box, Skeleton } from "@mui/material";
+
+import Carousel from "../../components/Carousel/Carousel";
+
+
 const Home = () => {
   const { firebaseProducts, setFirebaseProducts, isLoading, setIsLoading } =
     useContext(CartContext);
-
-  // const [] = useState([]);
 
   useEffect(() => {
     const getJuegos = async () => {
@@ -39,28 +42,23 @@ const Home = () => {
 
   return (
     <>
-      <div className="header-home">
-        {/* <h2>Bienvenido</h2> */}
-        <h2>Los mejores juegos para divertirse con amigos y familia</h2>
-      </div>
-      {/* {!isLoading ? (
-        <h2>Loading</h2>
-      ) : ( */}
-      <>
-        <div>
-          {firebaseProducts.length ? (
-            <ItemListContainer
-              firebaseProducts={firebaseProducts}
-              setFirebaseProducts={setFirebaseProducts}
-            />
-          ) : (
-            <div>
-              <p>Loading</p>
+      <Carousel />
+      <div>
+        {firebaseProducts.length ? (
+          <ItemListContainer
+            firebaseProducts={firebaseProducts}
+            setFirebaseProducts={setFirebaseProducts}
+          />
+        ) : (
+          <>
+            <div className="products-container">
+              <Skeleton variant="rectangular" width={400} height={400} />
+              <Skeleton variant="rectangular" width={400} height={400} />
+              <Skeleton variant="rectangular" width={400} height={400} />
             </div>
-          )}
-        </div>
-      </>
-      {/* // )} */}
+          </>
+        )}
+      </div>
     </>
   );
 };

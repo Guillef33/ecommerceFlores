@@ -1,0 +1,13 @@
+.banner-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 200px;
+  background-color: tomato;
+}
+
+.banner-home h2, p {
+  color: whitesmoke;
+}

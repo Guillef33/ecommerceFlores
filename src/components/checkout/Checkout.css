@@ -1,0 +1,30 @@
+.checkout-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  flex-direction: column;
+  font-family: "Balsamiq Sans", cursive;
+  margin: 20px;
+  padding: 50px;
+}
+
+.checkout-section h5 {
+  font-family: "Balsamiq Sans", cursive;
+  font-size: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.form-container {
+    /* margin: 20px; */
+}
+
+.text-field-checkout {
+  font-family: "Balsamiq Sans", cursive;
+
+}

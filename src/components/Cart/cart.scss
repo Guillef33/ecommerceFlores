@@ -1,14 +1,32 @@
+.section-cart {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
 .cart-container {
-    padding: 50px;
+  padding: 50px;
+  min-height: 80vh;
 }
 
 .cart-item__name {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .cart-item-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.cart-item__delete {
+    cursor: pointer;
+}
+
+.cart-icon__delete {
+    font-size: 30px;
+}
+
+
+// .cart-details {
+//     width: 70%;
+// }

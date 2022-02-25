@@ -1,30 +1,16 @@
-nav {
-  // background-color: black;
-  .nav-header {
+footer {
+  background-color: black;
+  color: whitesmoke;
+
+  .footer-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
   }
-  .nav-toggle {
-    font-size: 1.5rem;
-    background: transparent;
-    border-color: transparent;
-    transition: all 0.3s linear;
-    cursor: pointer;
-  color: tomato;
-
-  }
-  .nav-toggle:hover {
-    transform: rotate(90deg);
-  }
-
-  .homeLogo  {
-    height: 50px;
-  }
 
   .links a {
-  color: tomato;
+    color: whitesmoke;
     font-size: 1rem;
     text-transform: capitalize;
     letter-spacing: 0.1rem;
@@ -33,7 +19,7 @@ nav {
     transition: all 0.3s linear;
   }
   .links a:hover {
-    color: black;
+    color: tomato;
     padding-left: 1.5rem;
   }
   .social-icons {
@@ -56,8 +42,12 @@ nav {
     text-decoration: none;
   }
 
+  .faBeer {
+    color: white;
+  }
+
   @media screen and (min-width: 800px) {
-    .nav-center {
+    .footer-center {
       max-width: 1170px;
       margin: 0 auto;
       display: flex;
@@ -65,12 +55,10 @@ nav {
       justify-content: space-between;
       padding: 1rem;
     }
-    .nav-header {
+    .footer-header {
       padding: 0;
     }
-    .nav-toggle {
-      display: none;
-    }
+
     .links-container {
       height: auto !important;
     }
@@ -109,9 +97,9 @@ nav {
       margin-right: 10px;
     }
 
-    .logoHome {
-      width: 5em;
-      height: 5em;
+    .faBeer {
+      width: 2em;
+      height: 2em;
     }
   }
 }

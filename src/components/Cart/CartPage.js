@@ -3,27 +3,21 @@ import React, { useContext, useReducer } from "react";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 
-// import "../../assets/scss/base.scss";
+import { Button } from "@mui/material";
 import "./cart.scss";
 
 import { CartContext } from "../../context/CartContext";
 
+import Checkout from "../checkout/Checkout";
+
 function CartPage() {
-  const { cart, deleteCartById, deleteCart, total } =
-    useContext(CartContext);
-
-  // const [state, dispatch] = useReducer(shoppingReducer, initialState, init)
-
-  console.log(cart);
-
-  
-
+  const { cart, deleteCartById, deleteCart, total } = useContext(CartContext);
 
   return (
-    <section>
+    <section className="section-cart">
       <div className="cart-container">
         <h2>Tu carrito de compras</h2>
-        <div className="table">
+        <div className="cart-details">
           <h2>Total: {total}</h2>
           {cart ? (
             cart.map((producto) => {
@@ -42,23 +36,17 @@ function CartPage() {
           )}
 
           {cart ? (
-            <button className="btn-comprar" onClick={deleteCart}>
+            <Button variant="outlined" onClick={deleteCart} >
+              {" "}
               Vaciar Carrito
-            </button>
+            </Button>
           ) : (
             <p>No hay productos en el carrito</p>
           )}
         </div>
-        <div className="bottom-cart">
-          <Link to="/checkout">
-            <button
-              className="btn-comprar"
-              //  onClick={onAdd}
-            >
-              Finalizar compra
-            </button>
-          </Link>
-        </div>
+      </div>
+      <div>
+        <Checkout />
       </div>
     </section>
   );

@@ -8,8 +8,10 @@ import CartPage from "../components/Cart/CartPage";
 
 import ItemDetailContainerFB from "../components/ItemDetailFirebase/ItemDetailContainerFB";
 import Newnav from "../components/Navbar/Newnav";
+import Footer from "../components/Footer/Footer";
+
 import Category from "../pages/category/Category";
-import Checkout from "../pages/checkout/Checkout";
+import Checkout from "../components/checkout/Checkout";
 
 function AppRoutes() {
   return (
@@ -17,13 +19,12 @@ function AppRoutes() {
       <Newnav />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="category/:nameCategory" element={<Category />} />
-
         <Route path="detalle/:id" element={<ItemDetailContainerFB />} />
-        <Route path="/checkout" element={<Checkout />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,31 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,700&display=swap');
 .home-container {
-    display: grid;
+  display: grid;
 }
 
 .products-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  padding: 20px 20px;
+  grid-gap: 40px;
+  padding: 20px 100px;
 }
 
-.products-container .product-card {
-  height: auto;
+.cards-container:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.product-card {
-  /* width: 300px; */
+.cards-content-wrapper {
   padding: 20px;
   border: 1px solid whitesmoke;
   background-color: white;
-  text-align: left;
+  text-align: center;
+
+}
+
+.cards-content-wrapper h5 {
+font-family: 'Balsamiq Sans', cursive;
+    font-weight: 700;
+}
+
+.price-flex {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  /* display: flex; */
 }
 
 .card-body h4 {
@@ -39,9 +49,9 @@
   padding: 20px;
 }
 
-.card-title {
+.c {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 900;
 }
 
 .sidebar ul {
@@ -51,6 +61,11 @@
   height: 300px;
 }
 
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media screen and (max-width: 760px) {
   .products-container {

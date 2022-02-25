@@ -6,6 +6,10 @@ import "./category.scss";
 
 import { CartContext } from "../../context/CartContext";
 
+import { Box, Skeleton } from "@mui/material";
+
+import Header from "../../components/Header/Header";
+
 import {
   collection,
   query,
@@ -20,8 +24,6 @@ function CategoryPage() {
   const { nameCategory } = useParams();
 
   const { firebaseProducts, setFirebaseProducts } = useContext(CartContext);
-
-  // const [] = useState([]);
 
   useEffect(() => {
     const getJuegos = async () => {
@@ -42,10 +44,10 @@ function CategoryPage() {
 
   return (
     <section>
-      <div className="category-title">
-        <h2>Productos de la categoria: {nameCategory} </h2>
-      </div>
-
+      <Header
+        title={"Productos de la categoria:"}
+        nameCategory={nameCategory}
+      />
       <div>
         {firebaseProducts.length ? (
           <ItemListContainer
@@ -53,7 +55,13 @@ function CategoryPage() {
             setFirebaseProducts={setFirebaseProducts}
           />
         ) : (
-          <p>Loading</p>
+          <>
+            <div className="products-container">
+              <Skeleton variant="rectangular" width={400} height={400} />
+              <Skeleton variant="rectangular" width={400} height={400} />
+              <Skeleton variant="rectangular" width={400} height={400} />
+            </div>
+          </>
         )}
       </div>
     </section>
