@@ -12,6 +12,9 @@ import Footer from "../components/Footer/Footer";
 
 import Category from "../pages/category/Category";
 import Checkout from "../components/checkout/Checkout";
+import Login from "../components/Login/Login";
+import Register from "../components/Login/Register";
+import ProtectedRoute from "../pages/ProtectedRoute/ProtectedRoute";
 
 function AppRoutes() {
   return (
@@ -23,6 +26,18 @@ function AppRoutes() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="category/:nameCategory" element={<Category />} />
         <Route path="detalle/:id" element={<ItemDetailContainerFB />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        {/* <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        /> */}
       </Routes>
       <Footer />
     </BrowserRouter>

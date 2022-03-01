@@ -9,6 +9,9 @@ import "./cart.scss";
 import { CartContext } from "../../context/CartContext";
 
 import Checkout from "../checkout/Checkout";
+import Login from "../Login/Login";
+import Register from "../Login/Register";
+
 
 function CartPage() {
   const { cart, deleteCartById, deleteCart, total } = useContext(CartContext);
@@ -36,17 +39,24 @@ function CartPage() {
           )}
 
           {cart ? (
-            <Button variant="outlined" onClick={deleteCart} >
-              {" "}
-              Vaciar Carrito
-            </Button>
+            <>
+              <Button variant="outlined" onClick={deleteCart}>
+                {" "}
+                Vaciar Carrito
+              </Button>
+              <Link to="/checkout">
+                <Button variant="outlined">Finalizar Compra</Button>
+              </Link>
+            </>
           ) : (
             <p>No hay productos en el carrito</p>
           )}
         </div>
       </div>
       <div>
-        <Checkout />
+        {/* <Register /> */}
+        <Login />
+        {/* <Checkout /> */}
       </div>
     </section>
   );
