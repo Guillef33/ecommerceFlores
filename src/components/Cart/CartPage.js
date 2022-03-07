@@ -55,8 +55,8 @@ function CartPage() {
       </div>
       <div>
         {/* <Register /> */}
-        <Login />
-        {/* <Checkout /> */}
+        {/* <Login /> */}
+        <Checkout />
       </div>
     </section>
   );
