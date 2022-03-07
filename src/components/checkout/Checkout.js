@@ -42,11 +42,11 @@ function Checkout() {
     const docRef = await addDoc(collection(db, "purchases"), {
       cart,
       values,
-      id: "",
-      title: "",
-      price: "",
-      date: "",
-      total: "",
+      // id: "",
+      // title: "",
+      // price: "",
+      // date: "",
+      // total: "",
     });
 
     setValues(initialState);
