@@ -16,10 +16,13 @@ import { Box, Skeleton } from "@mui/material";
 
 import Carousel from "../../components/Carousel/Carousel";
 
+import { useAnalytics } from "use-analytics";
+
 
 const Home = () => {
   const { firebaseProducts, setFirebaseProducts, isLoading, setIsLoading } =
     useContext(CartContext);
+  // const { track } = useAnalytics();
 
   useEffect(() => {
     const getJuegos = async () => {
@@ -33,11 +36,12 @@ const Home = () => {
       });
       //   console.log(docs)
       setFirebaseProducts(docs);
+      // track('showPurchased', {
+      //   price: 120
+      // })
     };
     getJuegos();
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    // }, 500);
+
   }, []);
 
   return (
